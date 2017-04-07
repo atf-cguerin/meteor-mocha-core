@@ -7,7 +7,8 @@ Package.describe({
 });
 
 Npm.depends({
-  mocha: '2.4.5'
+  mocha: '2.4.5',
+  'mocha-teamcity-reporter': '1.1.1'
 });
 
 Package.onUse(function (api, where) {
