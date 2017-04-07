@@ -1,3 +1,30 @@
+# HACK
+
+## Purpose
+
+This repository is a hacked version of [practicalmeteor:mocha-core](https://github.com/practicalmeteor/meteor-mocha-core) which integrates the TeamCity reporter.
+
+It has only been tested with [dispatch:mocha](https://atmospherejs.com/dispatch/mocha) as a test driver.
+
+This hack was needed because integrating [mocha-teamcity-reporter](https://github.com/travisjeffery/mocha-teamcity-reporter) at the application level does not work with Meteor (the trick used by mocha to set the search directories and 'require' the package on demand fails for multiple reasons).
+
+## Usage
+
+In order to override the default [practicalmeteor:mocha-core](https://atmospherejs.com/practicalmeteor/mocha-core) used by [dispatch:mocha](https://atmospherejs.com/dispatch/mocha), you will need to install this repository as a local package ([tutorial](https://themeteorchef.com/tutorials/writing-a-package)).
+
+In order to activate the TeamCity reporter, you will need to set the following environment variables:
+````
+CLIENT_TEST_REPORTER=teamcity
+SERVER_TEST_REPORTER=mocha-teamcity-reporter
+````
+The difference between client and server side reporter name is an artefact of how it is registered in each case, unavoidable without modifying [mocha-teamcity-reporter](https://github.com/travisjeffery/mocha-teamcity-reporter) itself...
+
+----
+
+Original documentation follows.
+
+----
+
 # practicalmeteor:mocha-core
 
 This is an internal package. Please use one of the following test driver packages:
